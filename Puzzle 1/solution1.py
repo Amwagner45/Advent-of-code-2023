@@ -1,19 +1,16 @@
-puzzle_string = "hcpjssql4kjhbcqzkvr2fivebpllzqbkhg"
+def check_numbers(puzzle_string: str):
+    new_puzzle_string = []
 
-min_num = None
-max_num = None
-
-
-def check_numbers(puzzle_string, min_num=None, max_num=None):
-    for char in puzzle_string:
+    for i, char in enumerate(puzzle_string):
         if char in ("1", "2", "3", "4", "5", "6", "7", "8", "9", "0"):
-            max_num = char
-        if char in ("1", "2", "3", "4", "5", "6", "7", "8", "9", "0"):
-            if min_num == None:
-                min_num = char
-            else:
-                pass
-    return int(min_num + max_num)
+            new_puzzle_string.append(char)
+        for idx, num in enumerate(
+            ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+        ):
+            if puzzle_string[i:].startswith(num):
+                new_puzzle_string.append(str(idx + 1))
+    print(new_puzzle_string[0], new_puzzle_string[-1])
+    return int(new_puzzle_string[0] + new_puzzle_string[-1])
 
 
 def solution():
