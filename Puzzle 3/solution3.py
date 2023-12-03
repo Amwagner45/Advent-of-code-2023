@@ -25,13 +25,13 @@ print(df[1][3])
 valid_numbers_loc = []
 
 for idy, line in enumerate(df):
+    number_start = -1
+    number_end = -1
     for idx, char in enumerate(line):
-        number_start = -1
-        number_end = -1
-
         ## If number not yet started
         if number_start == -1 and str.isnumeric(char):
             number_start = idx
+            number_end = idx
             while str.isnumeric(line[idx + 1]):
                 number_end = idx + 1
 
